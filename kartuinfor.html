@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kartu Fakta Menarik — Teknologi</title>
+  <style>
+div.card-fakta{ width: 800px; height: 550px; background-color: burlywood; text-align: center; border-radius: 50px;}
+        h1{font-family:"poee";}
+            h2{font-family: "poee";}
+            li{font-family: "poee";}
+            @font-face {
+                font-family: poe;
+                src: url("Buttercup\ Flower.otf");}
+                @font-face {
+                font-family: poee;
+                src: url("Yomogi-Regular.ttf");}
+            p{font-family: "poee";}
+  </style>
+</head>
+<body>
+<center>
+  <div class="card-fakta">
+    <img id="factImage" src="hwnlaut.jpg" alt="Hewan Laut" />
+    <div class="content">
+      <h2>Fakta Menarik</h2>
+      <p class="subtitle">Tahukah kamu fakta-fakta unik ini?</p>
+
+      <ul class="facts-list" id="factList">
+        <li>Hanya kuda laut jantan yang "melahirkan" anak setelah telur dibuahi betina dan disimpan di kantung perutnya.</li>
+        <li>Gurita memiliki tiga jantung dan darahnya berwarna biru karena mengandung protein berbasis tembaga.</li>
+        <li>Tiram dapat mengubah jenis kelaminnya dari jantan menjadi betina, atau sebaliknya, tergantung kebutuhan reproduksi. </li>
+        <li>Ubur-ubur sudah ada sejak sekitar 650 juta tahun yang lalu, lebih tua dari dinosaurus dan hiu.</li>
+      
+      </ul>
+
+      <button class="btn-next" id="nextFact">🔁 Fakta Selanjutnya</button>
+
+      
+    </div>
+  
+
+  <script>
+    const factData = [
+      {
+        image: "badmin.jpg",
+        facts: [
+        " Kok bulu tangkis bisa melaju lebih dari 300 km/jam, membuatnya menjadi olahraga raket tercepat di dunia. ",
+
+"Kok bulu tangkis terbaik dibuat dari bulu sayap kiri angsa. ",
+"Pertandingan bulu tangkis terpendek yang tercatat hanya berlangsung 6 menit, sementara yang terpanjang mencapai 124 menit. ",
+" Beberapa pemain tradisional masih menggunakan senar raket yang terbuat dari lapisan perut hewan seperti kucing atau sapi. ",
+
+        ]
+      },
+      {
+        image: "buku.jpg",
+        facts: [
+          "Buku pertama kali muncul dalam bentuk tablet tanah liat di Mesopotamia sekitar 4000 tahun lalu.",
+          "Johannes Gutenberg memperkenalkan mesin cetak dengan huruf bergerak pada abad ke-15, yang memulai era pencetakan buku massal. Buku pertama yang dicetak dengan mesin ini adalah Alkitab Gutenberg pada tahun 1453.",
+          "Lebih dari 130 juta judul buku telah diterbitkan hingga saat ini, dan jumlahnya terus bertambah. ",
+          " Naskah cetak tertua yang masih ada adalah Diamond Sutra dari Tiongkok yang diperkirakan dicetak pada tahun 868 Masehi. ",
+        ]
+      },
+      {
+        image: "tank.jpg",
+        facts: [
+        "Tank T-80BVM adalah pengembangan dari T-80 yang merupakan tank pertama di dunia yang menggunakan mesin turbin gas, memberikan akselerasi dan kecepatan tinggi.",
+                "Tank tipe 10 dilengkapi dengan transmisi yang memungkinkannya mencapai kecepatan 70 km/jam, baik saat maju maupun mundur.",
+                "Tank M1 Abrams menggunakan mesin turbin gas yang bertenaga besar (1.500 HP) seperti jet, yang membuatnya cepat tetapi juga boros bahan bakar. ",
+                "Sistem Trophy yang terdapat pada tank Merkava menggunakan radar untuk mendeteksi proyektil anti-tank yang masuk dan secara otomatis menembakkan pencegat untuk menghancurkan proyektil sebelum mengenai tank.",
+        ]
+      },
+      {
+        image: "edumper.jpg",
+        facts: [
+        "Truk pertama di dunia dibuat oleh Daimler pada tahun 1896 dengan mesin Phoenix 1.006cc yang menghasilkan tenaga 4 dk. ",
+                "Kata truk berasal dari bahasa Latin trochlea yang berarti katrol atau roda. ",
+                " eDumper, sebuah truk listrik raksasa, mampu mengisi ulang baterainya sendiri saat menuruni lereng atau saat pengereman dengan memanfaatkan energi kinetik yang dihasilkan. ",
+                " Lampu kabut berwarna kuning digunakan truk karena lebih mudah menembus kabut, hujan, atau debu dibandingkan cahaya putih, sehingga meningkatkan visibilitas pengemudi." 
+
+        ]
+      }
+    ];
+
+    const factList = document.getElementById("factList");
+    const factImage = document.getElementById("factImage");
+    const nextBtn = document.getElementById("nextFact");
+
+    nextBtn.addEventListener("click", () => {
+      factList.classList.add("fade-out");
+      setTimeout(() => {
+        const randomFact = factData[Math.floor(Math.random() * factData.length)];
+        factImage.style.opacity = 0;
+
+        setTimeout(() => {
+          factImage.src = randomFact.image;
+          factImage.style.opacity = 1;
+        }, 400);
+
+        factList.innerHTML = randomFact.facts.map(f => `<li>${f}</li>`).join("");
+        factList.classList.remove("fade-out");
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
